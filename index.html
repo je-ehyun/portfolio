@@ -507,27 +507,29 @@ function loadWorks() {
 }
 
 function saveWorks() {
+  const defaultIds = defaultWorks.map(w => w.id);
+  const orderData = works.map(w => {
+    const def = defaultWorks.find(d => d.id === w.id);
+    const isUrl = w.img && w.img.startsWith('http');
+    const isBase64Changed = def && w.img && !w.img.startsWith('http') && w.img !== def.img;
+    return {
+      id: w.id, title: w.title, season: w.season, col: w.col,
+      tags: w.tags, desc: w.desc, emoji: w.emoji,
+      img: isUrl ? w.img : (isBase64Changed ? w.img : null)
+    };
+  });
   try {
-    const defaultIds = defaultWorks.map(w => w.id);
-    const added = [];
-    // 전체 순서를 savedOrder로 저장 (이미지 제외해서 용량 절약)
-    const orderData = works.map(w => {
-      const isDefault = defaultIds.includes(w.id);
-      return {
-        id: w.id,
-        title: w.title,
-        season: w.season,
-        col: w.col,
-        tags: w.tags,
-        desc: w.desc,
-        emoji: w.emoji,
-        // 기본 작품은 img를 null로 저장 (파일에서 불러옴), 새 작품은 img 유지
-        img: isDefault ? null : w.img
-      };
-    });
     localStorage.setItem(EDITS_KEY, JSON.stringify(orderData));
     localStorage.setItem(ADDED_KEY, JSON.stringify([]));
-  } catch(e) {}
+  } catch(e) {
+    try {
+      const urlOnly = orderData.map(w => Object.assign({}, w, {
+        img: w.img && w.img.startsWith('http') ? w.img : null
+      }));
+      localStorage.setItem(EDITS_KEY, JSON.stringify(urlOnly));
+      localStorage.setItem(ADDED_KEY, JSON.stringify([]));
+    } catch(e2) {}
+  }
 }
 
 let works = loadWorks();
