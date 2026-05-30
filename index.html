@@ -259,11 +259,7 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
     <button class="filter-btn" data-col="denim">DENIM</button>
     <button class="filter-btn" data-col="swim">SWIM</button>
     <button class="filter-btn" data-col="baby">BABY</button>
-    <div class="filter-spacer"></div>
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchBox" placeholder="Search works..." />
-    </div>
+
   </div>
 
   <!-- UPLOAD PANEL -->
@@ -617,7 +613,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     render();
   });
 });
-document.getElementById('searchBox').addEventListener('input', e => { currentSearch = e.target.value; render(); });
+
 
 // ── ADD PANEL ──
 function togglePanel() {
