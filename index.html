@@ -57,11 +57,11 @@ body.edit-on { padding-top: 38px; }
 
 
 .hero-year { font-size: .28em; font-weight: 300; vertical-align: super; font-style: normal; color: var(--fg); font-family: 'Cormorant Garamond', serif; letter-spacing: .01em; position: relative; top: -.2em; margin-left: .05em; }
-.hero-info-row { display: flex; flex-direction: column; align-items: center; width: 100%; gap: .1rem; margin-top: 2.5rem; margin-bottom: 6rem; }
+.hero-info-row { display: flex; flex-direction: column; align-items: center; width: 100%; gap: .1rem; margin-top: 2.5rem; margin-bottom: 3rem; }
 .hero-info-label { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--fg2); line-height: 1.9; }
 .hero-info-sub { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--fg3); line-height: 1.9; margin-top: .3rem; }
 
-.hero-center { display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 2; padding: 1.5rem 0 2rem; width: 100%; }
+.hero-center { display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 2; padding: 3.5rem 0 2rem; width: 100%; }
 .hero-eyebrow { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; text-align: center; }
 .hero-title { font-size: clamp(4rem, 10vw, 13rem); line-height: 1; color: var(--fg); margin-bottom: 0; text-align: center; width: 100%; }
 .hero-title-top { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: .35em; letter-spacing: .03em; color: var(--fg); display: block; line-height: 1; margin-bottom: -.4em; }
@@ -237,8 +237,6 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
 <section class="hero">
   <nav class="nav">
     <ul class="nav-links">
-      <li><a href="#gallery-section">portfolio</a></li>
-      <li><button class="edit-toggle-btn" id="editToggleBtn" onclick="requestEditMode()">Edit Mode</button></li>
     </ul>
   </nav>
   <div class="hero-center">
@@ -257,12 +255,9 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
     <button class="filter-btn active" data-col="all">All</button>
     <button class="filter-btn" data-col="outer">OUTER</button>
     <button class="filter-btn" data-col="inner">INNER</button>
-    <button class="filter-btn" data-col="bottom">BOTTOM</button>
     <button class="filter-btn" data-col="denim">DENIM</button>
     <button class="filter-btn" data-col="swim">SWIM</button>
     <button class="filter-btn" data-col="baby">BABY</button>
-    <button class="filter-btn" data-col="knit">KNIT</button>
-    <button class="filter-btn" data-col="etc">ETC</button>
     <div class="filter-spacer"></div>
     <div class="search-wrap">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -307,12 +302,9 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
         <span style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);align-self:center;">태그:</span>
         <input class="tag-chk" type="checkbox" id="t1" value="outer"><label class="tag-label" for="t1">OUTER</label>
         <input class="tag-chk" type="checkbox" id="t2" value="inner"><label class="tag-label" for="t2">INNER</label>
-        <input class="tag-chk" type="checkbox" id="t3" value="bottom"><label class="tag-label" for="t3">BOTTOM</label>
         <input class="tag-chk" type="checkbox" id="t4" value="denim"><label class="tag-label" for="t4">DENIM</label>
         <input class="tag-chk" type="checkbox" id="t5" value="swim"><label class="tag-label" for="t5">SWIM</label>
         <input class="tag-chk" type="checkbox" id="t6" value="baby"><label class="tag-label" for="t6">BABY</label>
-        <input class="tag-chk" type="checkbox" id="t7" value="knit"><label class="tag-label" for="t7">KNIT</label>
-        <input class="tag-chk" type="checkbox" id="t8" value="etc"><label class="tag-label" for="t8">ETC</label>
       </div>
       <div class="drop-zone full" id="dropZone">
         <input type="file" id="fileInput" accept="image/*" multiple />
@@ -338,11 +330,11 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
 </main>
 
 <footer>
-  
   <p>© 2025 · Fashion Portfolio</p>
+  <button class="edit-toggle-btn" id="editToggleBtn" onclick="requestEditMode()" style="opacity:.3;font-size:.6rem;letter-spacing:.08em;border-color:var(--border);color:var(--fg3)">edit</button>
 </footer>
 
-<button class="add-fab" id="fabBtn" title="작품 추가" onclick="togglePanel()">+</button>
+<button class="add-fab" id="fabBtn" title="작품 추가" onclick="togglePanel()" style="display:none">+</button>
 
 <!-- VIEW MODAL -->
 <div class="modal-bg" id="modal" onclick="closeModal(event)">
@@ -410,12 +402,9 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
       <div class="edit-tag-row" id="editTagRow">
         <input class="tag-chk" type="checkbox" id="et1" value="outer"><label class="tag-label" for="et1">OUTER</label>
         <input class="tag-chk" type="checkbox" id="et2" value="inner"><label class="tag-label" for="et2">INNER</label>
-        <input class="tag-chk" type="checkbox" id="et3" value="bottom"><label class="tag-label" for="et3">BOTTOM</label>
         <input class="tag-chk" type="checkbox" id="et4" value="denim"><label class="tag-label" for="et4">DENIM</label>
         <input class="tag-chk" type="checkbox" id="et5" value="swim"><label class="tag-label" for="et5">SWIM</label>
         <input class="tag-chk" type="checkbox" id="et6" value="baby"><label class="tag-label" for="et6">BABY</label>
-        <input class="tag-chk" type="checkbox" id="et7" value="knit"><label class="tag-label" for="et7">KNIT</label>
-        <input class="tag-chk" type="checkbox" id="et8" value="etc"><label class="tag-label" for="et8">ETC</label>
       </div>
     </div>
     <div class="edit-field">
@@ -801,6 +790,7 @@ function enterEditMode() {
   document.getElementById('editBanner').classList.add('on');
   document.getElementById('editToggleBtn').classList.add('active');
   document.getElementById('editToggleBtn').textContent = 'Exit Edit';
+  document.getElementById('fabBtn').style.display = 'flex';
   showToast('편집 모드가 활성화됐어요');
 }
 function exitEditMode() {
@@ -809,6 +799,8 @@ function exitEditMode() {
   document.getElementById('editBanner').classList.remove('on');
   document.getElementById('editToggleBtn').classList.remove('active');
   document.getElementById('editToggleBtn').textContent = 'Edit Mode';
+  document.getElementById('fabBtn').style.display = 'none';
+  closePanel();
   showToast('편집 모드 종료');
 }
 
