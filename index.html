@@ -255,15 +255,9 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
     <button class="filter-btn active" data-col="all">All</button>
     <button class="filter-btn" data-col="outer">OUTER</button>
     <button class="filter-btn" data-col="inner">INNER</button>
-    <button class="filter-btn" data-col="bottom">BOTTOM</button>
     <button class="filter-btn" data-col="denim">DENIM</button>
     <button class="filter-btn" data-col="swim">SWIM</button>
     <button class="filter-btn" data-col="baby">BABY</button>
-    <div class="filter-spacer"></div>
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchBox" placeholder="Search works..." />
-    </div>
   </div>
 
   <!-- UPLOAD PANEL -->
@@ -303,7 +297,6 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
         <span style="font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3);align-self:center;">태그:</span>
         <input class="tag-chk" type="checkbox" id="t1" value="outer"><label class="tag-label" for="t1">OUTER</label>
         <input class="tag-chk" type="checkbox" id="t2" value="inner"><label class="tag-label" for="t2">INNER</label>
-        <input class="tag-chk" type="checkbox" id="t3" value="bottom"><label class="tag-label" for="t3">BOTTOM</label>
         <input class="tag-chk" type="checkbox" id="t4" value="denim"><label class="tag-label" for="t4">DENIM</label>
         <input class="tag-chk" type="checkbox" id="t5" value="swim"><label class="tag-label" for="t5">SWIM</label>
         <input class="tag-chk" type="checkbox" id="t6" value="baby"><label class="tag-label" for="t6">BABY</label>
@@ -404,7 +397,6 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
       <div class="edit-tag-row" id="editTagRow">
         <input class="tag-chk" type="checkbox" id="et1" value="outer"><label class="tag-label" for="et1">OUTER</label>
         <input class="tag-chk" type="checkbox" id="et2" value="inner"><label class="tag-label" for="et2">INNER</label>
-        <input class="tag-chk" type="checkbox" id="et3" value="bottom"><label class="tag-label" for="et3">BOTTOM</label>
         <input class="tag-chk" type="checkbox" id="et4" value="denim"><label class="tag-label" for="et4">DENIM</label>
         <input class="tag-chk" type="checkbox" id="et5" value="swim"><label class="tag-label" for="et5">SWIM</label>
         <input class="tag-chk" type="checkbox" id="et6" value="baby"><label class="tag-label" for="et6">BABY</label>
@@ -618,7 +610,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     render();
   });
 });
-document.getElementById('searchBox').addEventListener('input', e => { currentSearch = e.target.value; render(); });
+
 
 // ── ADD PANEL ──
 function togglePanel() {
