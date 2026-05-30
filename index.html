@@ -451,9 +451,9 @@ footer p { font-size: .7rem; color: var(--fg3); letter-spacing: .08em; }
 <script>
 const EDIT_PASSWORD = '1234';
 const colNames = {outer:'OUTER', inner:'INNER', bottom:'BOTTOM', denim:'DENIM', swim:'SWIM', baby:'BABY', knit:'KNIT', etc:'ETC', sportive:'SPORTIVE', street:'STREET', outdoor:'OUTDOOR', athleisure:'ATHLEISURE', girls:'GIRLS', basic:'BASIC', character:'CHARACTER', classic:'CLASSIC'};
-const STORAGE_KEY = 'fashion_portfolio_works_v3';
-const EDITS_KEY = 'fashion_portfolio_edits_v3';
-const ADDED_KEY = 'fashion_portfolio_added_v3';
+const STORAGE_KEY = 'fashion_portfolio_works_v4';
+const EDITS_KEY = 'fashion_portfolio_edits_v4';
+const ADDED_KEY = 'fashion_portfolio_added_v4';
 
 const defaultWorks = [
   {id:3,title:"Sportive Girls' Jersey Set",season:"26SS",col:"girls",tags:["inner"],emoji:"🩶",img:null,desc:"26SS Sportive Girls' Track 3 Set"},
@@ -487,7 +487,6 @@ function loadWorks() {
     const defaultMap = {};
     base.forEach(w => { defaultMap[w.id] = w; });
 
-    // savedOrder 기준 순서 유지, URL 이미지만 localStorage에서 가져옴
     const merged = savedOrder.map(saved => {
       const def = defaultMap[saved.id];
       if (def) {
@@ -495,7 +494,6 @@ function loadWorks() {
           img: (saved.img && saved.img.startsWith('http')) ? saved.img : def.img
         });
       }
-      // 새로 추가된 작품
       return saved;
     });
 
@@ -504,7 +502,6 @@ function loadWorks() {
     return [...merged, ...missing, ...added];
   } catch(e) { return base; }
 }
-
 function saveWorks() {
   const defaultIds = defaultWorks.map(w => w.id);
   const orderData = works.map(w => {
